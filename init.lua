@@ -977,5 +977,26 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.relativenumber = true
 
+--Harpoon setup
+
+local harpoon = require("harpoon")
+harpoon:setup()
+
+--Harpoon files marked 1-4
+vim.keymap.set("n", "<a-1>", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<a-2>", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<a-3>", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<a-4>", function() harpoon:list():select(4) end)
+
+--Harpoon forward and back
+vim.keymap.set("n", "<a-6>", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<a-7>", function() harpoon:list():next() end)
+
+--Harpoon user interface
+vim.keymap.set("n", "<a-5>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set("n", "<a-0>", function() harpoon:list():add() end)
+
+
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
